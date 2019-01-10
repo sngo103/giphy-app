@@ -6,9 +6,12 @@ class App extends Component {
   render() {
     return (
       <div>
+        <div className="grid">
         <Results number={0} />
         <Results number={1} />
+        <Results number={2} />
         <Results number={3} />
+        </div>
       </div>
     );
   }
@@ -48,8 +51,7 @@ class Results extends Component {
   render(){
     return (
       <div>
-        <hr />
-        <h2> Here are the results: </h2>
+
         <img src={this.state.giflink} alt="Where is my photo??!!"/>
       </div>
     )
