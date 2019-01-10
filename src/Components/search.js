@@ -28,22 +28,26 @@ class SearchBar extends Component{
   }
 
   handleClick(event){
+    this.setState({searchTerm: event.target.value});
     event.preventDefault();
     console.log(this.state.searchTerm);
   }
 
   render(){
     return (
-      <div id="form">
-        <table id="name">
-          <tbody><tr>
-          <td><strong><h4>
-            <form>
-              <input id="search-bar" name="searchTerm" type="text" value={this.state.search} onChange={this.handleTerm} /> <br /> <br />
-              <button id="button" onClick={this.handleClick}> Find my gif! </button>
-            </form></h4></strong></td>
-          </tr></tbody>
-        </table>
+      <div>
+        <div id="form">
+          <table id="name">
+            <tbody><tr>
+            <td><strong><h4>
+              <form>
+                <input id="search-bar" name="searchTerm" type="text" value={this.state.searchTerm} onChange={this.handleTerm} /> <br /> <br />
+                <button id="button" onClick={this.handleClick}> Find my gif! </button>
+              </form></h4></strong></td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div>
       </div>
     )
   }
