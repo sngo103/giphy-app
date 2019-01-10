@@ -113,3 +113,9 @@ ul {
   border-radius: 5px;
   text-align:center;
 }
+
+.grid {
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
