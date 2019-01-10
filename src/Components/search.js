@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './../logo.svg';
 import './../App.css';
+import Results from './api'
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class SearchBar extends Component{
     this.setState({searchTerm: event.target.value});
     event.preventDefault();
     console.log(this.state.searchTerm);
+   <Results term=(this.state.searchTerm) />
   }
 
   render(){

@@ -11,6 +11,14 @@ class App extends Component {
         <Results number={1} />
         <Results number={2} />
         <Results number={3} />
+        <Results number={4} />
+        <Results number={5} />
+        <Results number={6} />
+        <Results number={7} />
+        <Results number={8} />
+        <Results number={9} />
+        <Results number={10} />
+        <Results number={11} />
         </div>
       </div>
     );
@@ -22,7 +30,8 @@ class Results extends Component {
     super(props);
 
     this.state = {
-      gifs: []
+      gifs: [],
+      term: ""
     }
     this.getResults = this.getResults.bind(this);
   }
@@ -30,7 +39,7 @@ class Results extends Component {
   getResults(term) {
     console.log(term);
     //---------------------->
-    let url = 'https://api.giphy.com/v1/gifs/search?api_key=4AI2ir7Xo4HhpJ1796Fspdin0IHsmbAY&q=cats&limit=10';
+    let url = 'https://api.giphy.com/v1/gifs/search?api_key=4AI2ir7Xo4HhpJ1796Fspdin0IHsmbAY&q=' + term + '&limit=12';
     fetch(url).
     then(response => response.json()).then((g) => {
       console.log(g["data"]);
