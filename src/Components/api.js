@@ -11,32 +11,52 @@ class App extends Component {
 }
 
 class Results extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       gifs: []
     }
+    this.getResults = this.getResults.bind(this);
   }
 
-  handleTermChange(term) {
+  getResults(term) {
     console.log(term);
     //---------------------->
-    let url = 'https://api.giphy.com/v1/gifs/search?api_key=4AI2ir7Xo4HhpJ1796Fspdin0IHsmbAY&q=cats&limit=1';
+    let url = 'https://api.giphy.com/v1/gifs/search?api_key=4AI2ir7Xo4HhpJ1796Fspdin0IHsmbAY&q=cats&limit=10';
     fetch(url).
-    then(response => response.json()).then((gifs) => {
-      console.log(gifs);
-      console.log(gifs.length);
+    then(response => response.json()).then((g) => {
+      console.log(g["data"]);
+      var images = [];
+      for(var i = 0; i < g["data"].length; i++){
+        images.push(g["data"][i]["images"]["original"]["url"]);
+      }
+      console.log("IMAGES: ");
+      console.log(images);
       this.setState({
-        gifs: gifs
+        gifs: images,
+        giflink: g["data"][0]["images"]["original"]["url"]
       });
     });
   };
 
+  componentDidMount(){
+    this.getResults();
+  }
+
   render(){
     return (
       <div>
-        <img src={this.state.gifs} />
+        <hr />
+        <h2> Here are the results: </h2>
+        <img src={this.state.giflink} alt="Where is my photo??!!"/>
+        <img src={this.state.giflink} alt="Where is my photo??!!"/>
+        <img src={this.state.giflink} alt="Where is my photo??!!"/>
+        <img src={this.state.giflink} alt="Where is my photo??!!"/>
+        <img src={this.state.giflink} alt="Where is my photo??!!"/>
+        <img src={this.state.giflink} alt="Where is my photo??!!"/>
+        <img src={this.state.giflink} alt="Where is my photo??!!"/>
+        <img src={this.state.giflink} alt="Where is my photo??!!"/>
       </div>
     )
   }
