@@ -5,7 +5,11 @@ import './../App.css';
 class App extends Component {
   render() {
     return (
-      <Results />
+      <div>
+        <Results number={0} />
+        <Results number={1} />
+        <Results number={3} />
+      </div>
     );
   }
 }
@@ -28,14 +32,11 @@ class Results extends Component {
     then(response => response.json()).then((g) => {
       console.log(g["data"]);
       var images = [];
-      for(var i = 0; i < g["data"].length; i++){
-        images.push(g["data"][i]["images"]["original"]["url"]);
-      }
       console.log("IMAGES: ");
       console.log(images);
       this.setState({
         gifs: images,
-        giflink: g["data"][0]["images"]["original"]["url"]
+        giflink: g["data"][this.props.number]["images"]["original"]["url"]
       });
     });
   };
@@ -49,13 +50,6 @@ class Results extends Component {
       <div>
         <hr />
         <h2> Here are the results: </h2>
-        <img src={this.state.giflink} alt="Where is my photo??!!"/>
-        <img src={this.state.giflink} alt="Where is my photo??!!"/>
-        <img src={this.state.giflink} alt="Where is my photo??!!"/>
-        <img src={this.state.giflink} alt="Where is my photo??!!"/>
-        <img src={this.state.giflink} alt="Where is my photo??!!"/>
-        <img src={this.state.giflink} alt="Where is my photo??!!"/>
-        <img src={this.state.giflink} alt="Where is my photo??!!"/>
         <img src={this.state.giflink} alt="Where is my photo??!!"/>
       </div>
     )
