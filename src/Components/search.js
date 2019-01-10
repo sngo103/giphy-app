@@ -18,10 +18,17 @@ class SearchBar extends Component{
       searchTerm: "",
     }
 
+    this.handleTerm = this.handleTerm.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+
+  }
+
+  handleTerm(event) {
+    this.setState({searchTerm: event.target.value});
   }
 
   handleClick(event){
-    this.setState({searchTerm: event.target.value});
+    event.preventDefault();
     console.log(this.state.searchTerm);
   }
 
@@ -32,7 +39,7 @@ class SearchBar extends Component{
           <tbody><tr>
           <td><strong><h4>
             <form>
-              <input id="search-bar" name="searchTerm" type="text" value={this.state.currentfirst_name} onChange={this.updateFirst} /><br /> <br />
+              <input id="search-bar" name="searchTerm" type="text" value={this.state.search} onChange={this.handleTerm} /> <br /> <br />
               <button id="button" onClick={this.handleClick}> Find my gif! </button>
             </form></h4></strong></td>
           </tr></tbody>
